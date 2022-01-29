@@ -1,0 +1,28 @@
+{
+  "name": "aws-lambda-dynamodb-crud",
+  "version": "1.0.0",
+  "description": "An AWS Lamda basic CRUD operations with connection to DynamoDB",
+  "dependencies": {
+    "aws-sdk": "^2.1066.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "deploy": "sls deploy --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ISCIrvingDev/aws-lambda-dynamodb-crud.git"
+  },
+  "keywords": [
+    "AWS",
+    "Lamda",
+    "DynamoDB"
+  ],
+  "author": "Jose Irving Salazar Rivas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ISCIrvingDev/aws-lambda-dynamodb-crud/issues"
+  },
+  "homepage": "https://github.com/ISCIrvingDev/aws-lambda-dynamodb-crud#readme"
+}
