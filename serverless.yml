@@ -6,6 +6,12 @@ provider:
   runtime: nodejs12.x
   lambdaHashingVersion: '20201221'
   region: us-west-1
+  iamRoleStatements: # Todo lo que estaa aqui adentro es para otorgarle permisos al proyecto para modificar las tablas descritas en "Resource"
+    - Effect: Allow # Otorga el permiso
+      Action: # Todos los permisos
+        - dynamodb:*
+      Resource: # Tablas afectadas
+        - arn:aws:dynamodb:us-west-1:493103141670:table/Tasks
 
 functions:
   hello:
@@ -14,3 +20,17 @@ functions:
       - httpApi:
           path: /
           method: get
+
+resources:
+  Resources:
+    Tasks: # Nombre del recurso
+      Type: AWS::DynamoDB::Table # Tipo de recurso -> Tabla
+      Properties:
+        TableName: Tasks # Nombre de la tabla
+        BillingMode: PAY_PER_REQUEST # Forma de pago -> Pago por peticion
+        AttributeDefinitions: # Definicion de una columna
+          - AttributeName: id # Nombre de la columna
+            AttributeType: S # Tipo de valor -> S -> String
+        KeySchema: # Definicion de las caracteristicas de la columna
+          - AttributeName: id
+            KeyType: HASH # La columna "id" es de tipo HASH
