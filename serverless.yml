@@ -15,11 +15,17 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: src/handler.hello
     events:
       - httpApi:
           path: /
           method: get
+  createTask:
+    handler: src/tasks/create.createTask
+    events:
+      - httpApi:
+          path: /tasks/create
+          method: post
 
 resources:
   Resources:
