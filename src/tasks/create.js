@@ -4,7 +4,7 @@ const AWS = require('aws-sdk')
 const createTask = async (event) => {
   const dynamoDBClient = new AWS.DynamoDB.DocumentClient()
 
-  const { title, descripcion } = event
+  const { title, descripcion } = JSON.parse(event.body)
   const id = v4()
   const currentDate = new Date().toISOString()
 
@@ -12,6 +12,7 @@ const createTask = async (event) => {
     id,
     createdAt: currentDate,
     updatedAt: currentDate,
+    state: true,
     title,
     descripcion
   }
@@ -34,7 +35,7 @@ const createTask = async (event) => {
 
   return {
     statusCode: 200,
-    response: JSON.stringify(response)
+    body: JSON.stringify(response)
   }
 }
 
