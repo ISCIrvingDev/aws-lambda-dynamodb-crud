@@ -14,7 +14,8 @@ const createTask = async (event) => {
     updatedAt: currentDate,
     state: true,
     title,
-    descripcion
+    descripcion,
+    done: false
   }
 
   const params = {
@@ -22,20 +23,11 @@ const createTask = async (event) => {
     Item: newTask
   }
 
-  const res = await dynamoDBClient.put(params).promise()
-  const response = res.$response.error
-    ? {
-      msn: 'Unable to add a task',
-      err: res.$response.error
-    }
-    : {
-      msn: 'Task added successfully',
-      body: newTask
-    }
+  await dynamoDBClient.put(params).promise()
 
   return {
     statusCode: 200,
-    body: JSON.stringify(response)
+    body: JSON.stringify(newTask)
   }
 }
 
