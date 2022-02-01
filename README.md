@@ -5,7 +5,32 @@ An AWS Lambda basic CRUD operations with connection to DynamoDB
 * GET /tasks/getAll
 * GET /tasks/getById/{id}
 * POST /tasks/create
+```js
+// Request body example
+{
+  title: 'Your title',
+  descripcion: 'Your descripcion'
+}
+```
 * PUT /tasks/update/{id}
+```js
+// Request body example*
+{
+  state: true,
+  title: 'Your new title',
+  descripcion: 'Your new descripcion',
+  done: true
+}
+```
+
+---
+**Notes**
+
+> \* state property is true by default when created
+
+> \* done property is false by default when created
+---
+
 * PUT /tasks/delete/{id}
 
 # Steps
