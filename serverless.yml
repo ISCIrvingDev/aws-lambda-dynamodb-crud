@@ -13,18 +13,24 @@ provider:
         - arn:aws:dynamodb:us-west-1:493103141670:table/Tasks
 
 functions:
-  getAllTasks:
-    handler: src/tasks/getAll.getAllTasks
-    events:
-      - httpApi:
-          path: /tasks/getAll
-          method: get
   createTask:
     handler: src/tasks/create.createTask
     events:
       - httpApi:
           path: /tasks/create
           method: post
+  getAllTasks:
+    handler: src/tasks/getAll.getAllTasks
+    events:
+      - httpApi:
+          path: /tasks/getAll
+          method: get
+  getTaskById:
+    handler: src/tasks/getById.getTaskById
+    events:
+      - httpApi:
+          path: /tasks/getById/{id}
+          method: get
 
 resources:
   Resources:
